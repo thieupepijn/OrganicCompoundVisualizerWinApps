@@ -8,6 +8,7 @@
  */
 using System;
 using IUPAC2Formula;
+using Formula2Graph;
 
 namespace OrganicCompoundVisualizerConsole
 {
@@ -19,11 +20,13 @@ namespace OrganicCompoundVisualizerConsole
 			{
 				IUPACCompound compound = new IUPACCompound(args[0]);
 				string formula = compound.ShowFormula();
+				Chain mainChain = new Chain(formula, null);
+				
 				Console.WriteLine(formula);
+				Console.WriteLine(string.Join(";", mainChain.Nodes));
+				Console.WriteLine(string.Join(Environment.NewLine, mainChain.Vertices));
 			}
-			// TODO: Implement Functionality Here
 			
-		//	Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}
 	}

@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Project</StartAction>
+    <StartArguments>pentane</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -46,6 +47,9 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Formula2Graph">
+      <HintPath>..\..\Excecutables\Formula2Graph.dll</HintPath>
+    </Reference>
     <Reference Include="IUPAC2Formula">
       <HintPath>..\..\Excecutables\IUPAC2Formula.dll</HintPath>
     </Reference>
