@@ -7,8 +7,11 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using IUPAC2Formula;
 using Formula2Graph;
+using Graph2Coordinates;
 
 namespace OrganicCompoundVisualizerConsole
 {
@@ -18,16 +21,55 @@ namespace OrganicCompoundVisualizerConsole
 		{
 			if (args.Length > 0)
 			{
-				IUPACCompound compound = new IUPACCompound(args[0]);
-				string formula = compound.ShowFormula();
-				Chain mainChain = new Chain(formula, null);
+				string formula = GetFormula(args[0]);
+				Chain graph = GetGraph(formula);
 				
-				Console.WriteLine(formula);
-				Console.WriteLine(string.Join(";", mainChain.Nodes));
-				Console.WriteLine(string.Join(Environment.NewLine, mainChain.Vertices));
+				string nodesLine = GraphNodes2Line(graph);
+				List<string> verticesLines = GraphVertices2Lines(graph);
+				
+				List<Graph2Coordinates.Node> nodes = new List<Graph2Coordinates.Node>();
+				UtilNodesAndVertices.InitNodesFromLine(nodesLine, nodes);
+				
+				List<Graph2Coordinates.Vertice> vertices = new List<Graph2Coordinates.Vertice>();
+				UtilNodesAndVertices.InitVerticesFromLines(verticesLines, nodes, vertices);
+				
+				UtilNodesAndVertices.InitializeNodeLocations(nodes, vertices);
+				UtilNodesAndVertices.Reposition(nodes, vertices, 1000, 1000);
+				//	UtilDrawing.DrawEverything(canvas, nodes, vertices);
+				
+				//Console.WriteLine(formula);
+				//Console.WriteLine(string.Join(";", mainChain.Nodes));
+				//Console.WriteLine(string.Join(Environment.NewLine, mainChain.Vertices));
 			}
 			
 			Console.ReadKey(true);
 		}
+		
+		private static string GetFormula(string line)
+		{
+			IUPACCompound compound = new IUPACCompound(line);
+			return compound.ShowFormula();
+		}
+		
+		private static Chain GetGraph(string formula)
+		{
+			return new Chain(formula, null);
+		}
+		
+		private static string GraphNodes2Line(Chain graph)
+		{
+			return string.Join(";", graph.Nodes);
+		}
+		
+		private static List<string> GraphVertices2Lines(Chain graph)
+		{
+			List<string> lines = new List<string>();
+			graph.Vertices.ForEach(v => lines.Add(v.ToString()));
+			return lines;
+		}
+		
+		
+		
+		
 	}
 }
