@@ -12,6 +12,7 @@ using System.Linq;
 using IUPAC2Formula;
 using Formula2Graph;
 using Graph2Coordinates;
+using Coordinates2Image;
 
 namespace OrganicCompoundVisualizerConsole
 {
@@ -40,9 +41,12 @@ namespace OrganicCompoundVisualizerConsole
 				//Console.WriteLine(formula);
 				//Console.WriteLine(string.Join(";", mainChain.Nodes));
 				//Console.WriteLine(string.Join(Environment.NewLine, mainChain.Vertices));
+				string imageFilePath = @"C:\Matthieu\ThieuProgs\yo.bmp";
+				Drawer drawer = new Drawer(nodes, vertices, 1000, 1000, imageFilePath);
+			     
 			}
 			
-			Console.ReadKey(true);
+		//	Console.ReadKey(true);
 		}
 		
 		private static string GetFormula(string line)

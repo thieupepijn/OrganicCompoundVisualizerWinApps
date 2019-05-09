@@ -47,6 +47,9 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Coordinates2Image">
+      <HintPath>..\..\Excecutables\Coordinates2Image.dll</HintPath>
+    </Reference>
     <Reference Include="Formula2Graph">
       <HintPath>..\..\Excecutables\Formula2Graph.dll</HintPath>
     </Reference>
