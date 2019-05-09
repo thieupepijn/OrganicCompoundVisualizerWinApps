@@ -20,9 +20,12 @@ namespace OrganicCompoundVisualizerConsole
 	{
 		public static void Main(string[] args)
 		{
-			if (args.Length > 0)
+			if (args.Length > 1)
 			{
-				string formula = GetFormula(args[0]);
+				string iupacname = args[0];
+				string imageOutputFilePath = args[1];
+				
+				string formula = GetFormula(iupacname);
 				Chain graph = GetGraph(formula);
 				
 				string nodesLine = GraphNodes2Line(graph);
@@ -40,10 +43,12 @@ namespace OrganicCompoundVisualizerConsole
 				
 				//Console.WriteLine(formula);
 				//Console.WriteLine(string.Join(";", mainChain.Nodes));
-				//Console.WriteLine(string.Join(Environment.NewLine, mainChain.Vertices));
-				string imageFilePath = @"C:\Matthieu\ThieuProgs\yo.bmp";
-				Drawer drawer = new Drawer(nodes, vertices, 1000, 1000, imageFilePath);
-			     
+				//Console.WriteLine(string.Join(Environment.NewLine, mainChain.Vertices));	
+				Drawer drawer = new Drawer(nodes, vertices, 1000, 1000, imageOutputFilePath);
+			}
+			else 
+			{
+				Console.WriteLine("OrganicCompoundVisualizerConsole <iupac-name> <imagefilepath>");
 			}
 			
 		//	Console.ReadKey(true);
