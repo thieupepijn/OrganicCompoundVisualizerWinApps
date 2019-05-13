@@ -1,0 +1,21 @@
+﻿<Window x:Class="OrganicCompoundVisualizerWPF.Window1"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="OrganicCompoundVisualizerWPF" Height="700" Width="1000"
+	>
+	<Grid>
+		<Grid.ColumnDefinitions>
+		<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		
+	<Grid.RowDefinitions>
+		<RowDefinition Height="Auto" />
+		<RowDefinition Height="Auto" />
+		<RowDefinition Height="*" />
+	</Grid.RowDefinitions>
+	<TextBox Name="txtIupacName" Grid.Row="0"  />
+	<Button Name="btnDraw" Content="Draw" Grid.Row="1" Click="BtnDraw_Click"  />
+	<Canvas Name="canvas" Grid.Row="2" />
+	
+	</Grid>
+</Window>
