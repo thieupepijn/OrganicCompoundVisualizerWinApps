@@ -1,7 +1,6 @@
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\OrganicCompoundVisualizerWPF.exe.config
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\OrganicCompoundVisualizerWPF.exe
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\OrganicCompoundVisualizerWPF.pdb
-C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\obj\Debug\OrganicCompoundVisualizerWPF.csprojResolveAssemblyReference.cache
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\obj\Debug\Window1.baml
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\obj\Debug\Window1.g.cs
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\obj\Debug\App.g.cs
@@ -19,3 +18,4 @@ C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\Organ
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\Graph2Coordinates.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\IUPAC2Formula.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\GeneralUtils.pdb
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\obj\Debug\OrganicCompoundVisualizerWPF.csprojResolveAssemblyReference.cache

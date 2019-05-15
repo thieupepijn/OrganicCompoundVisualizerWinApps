@@ -43,15 +43,16 @@ namespace OrganicCompoundVisualizerConsole
 				
 				//Console.WriteLine(formula);
 				//Console.WriteLine(string.Join(";", mainChain.Nodes));
-				//Console.WriteLine(string.Join(Environment.NewLine, mainChain.Vertices));	
-				Drawer drawer = new Drawer(nodes, vertices, 1000, 1000, imageOutputFilePath);
+				//Console.WriteLine(string.Join(Environment.NewLine, mainChain.Vertices));
+				Drawer drawer = new Drawer(nodes, vertices, 1000, 1000);
+				drawer.Draw2File(imageOutputFilePath);
 			}
-			else 
+			else
 			{
 				Console.WriteLine("OrganicCompoundVisualizerConsole <iupac-name> <imagefilepath>");
 			}
 			
-		//	Console.ReadKey(true);
+			//	Console.ReadKey(true);
 		}
 		
 		private static string GetFormula(string line)

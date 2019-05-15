@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -30,12 +31,11 @@ namespace OrganicCompoundVisualizerWPF
 		void BtnDraw_Click(object sender, RoutedEventArgs e)
 		{
 			
-			int width = (int)canvas.Width;
-			int height = (int)canvas.Height;
+			int width = (int)this.Width;
+			int height = (int)this.Height;
 			
-			string formula = txtIupacName.Text.Trim();
-			
-			
+			string iupacname = txtIupacName.Text.Trim();	
+			string formula = GetFormula(iupacname);
 			Chain graph = GetGraph(formula);
 			
 			string nodesLine = GraphNodes2Line(graph);
@@ -49,6 +49,9 @@ namespace OrganicCompoundVisualizerWPF
 			
 			UtilNodesAndVertices.InitializeNodeLocations(nodes, vertices);
 			UtilNodesAndVertices.Reposition(nodes, vertices, width, height);
+			
+			Drawer drawer = new Drawer(nodes, vertices, width, height);
+			imgIUPAC.Source = drawer.Draw2BitmapImage();
 		}
 		
 		

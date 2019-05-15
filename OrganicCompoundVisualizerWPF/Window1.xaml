@@ -15,7 +15,6 @@
 	</Grid.RowDefinitions>
 	<TextBox Name="txtIupacName" Grid.Row="0"  />
 	<Button Name="btnDraw" Content="Draw" Grid.Row="1" Click="BtnDraw_Click"  />
-	<Canvas Name="canvas" Grid.Row="2" />
-	
+	 <Image Name="imgIUPAC" Grid.Row="2" Stretch="Fill" />
 	</Grid>
 </Window>
