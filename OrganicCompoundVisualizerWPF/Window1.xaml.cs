@@ -12,10 +12,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Linq;
-using IUPAC2Formula;
-using Formula2Graph;
-using Graph2Coordinates;
-using Coordinates2Image;
+using IUPAC2Image;
 
 namespace OrganicCompoundVisualizerWPF
 {
@@ -35,48 +32,13 @@ namespace OrganicCompoundVisualizerWPF
 			int height = (int)this.Height;
 			
 			string iupacname = txtIupacName.Text.Trim();	
-			string formula = GetFormula(iupacname);
-			Chain graph = GetGraph(formula);
 			
-			string nodesLine = GraphNodes2Line(graph);
-			List<string> verticesLines = GraphVertices2Lines(graph);
-			
-			List<Graph2Coordinates.Node> nodes = new List<Graph2Coordinates.Node>();
-			UtilNodesAndVertices.InitNodesFromLine(nodesLine, nodes);
-			
-			List<Graph2Coordinates.Vertice> vertices = new List<Graph2Coordinates.Vertice>();
-			UtilNodesAndVertices.InitVerticesFromLines(verticesLines, nodes, vertices);
-			
-			UtilNodesAndVertices.InitializeNodeLocations(nodes, vertices);
-			UtilNodesAndVertices.Reposition(nodes, vertices, width, height);
-			
-			Drawer drawer = new Drawer(nodes, vertices, width, height);
-			imgIUPAC.Source = drawer.Draw2BitmapImage();
+			IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height);	
+			imgIUPAC.Source = converter.DrawToBitmapImage();
 		}
 		
 		
-		private static string GetFormula(string line)
-		{
-			IUPACCompound compound = new IUPACCompound(line);
-			return compound.ShowFormula();
-		}
 		
-		private static Chain GetGraph(string formula)
-		{
-			return new Chain(formula, null);
-		}
-		
-		private static string GraphNodes2Line(Chain graph)
-		{
-			return string.Join(";", graph.Nodes);
-		}
-		
-		private static List<string> GraphVertices2Lines(Chain graph)
-		{
-			List<string> lines = new List<string>();
-			graph.Vertices.ForEach(v => lines.Add(v.ToString()));
-			return lines;
-		}
 		
 	}
 }

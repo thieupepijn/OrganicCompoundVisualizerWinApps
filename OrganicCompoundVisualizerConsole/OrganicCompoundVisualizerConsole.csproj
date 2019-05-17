@@ -47,17 +47,8 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Coordinates2Image">
-      <HintPath>..\..\Excecutables\Coordinates2Image.dll</HintPath>
-    </Reference>
-    <Reference Include="Formula2Graph">
-      <HintPath>..\..\Excecutables\Formula2Graph.dll</HintPath>
-    </Reference>
-    <Reference Include="Graph2Coordinates">
-      <HintPath>..\..\Excecutables\Graph2Coordinates.dll</HintPath>
-    </Reference>
-    <Reference Include="IUPAC2Formula">
-      <HintPath>..\..\Excecutables\IUPAC2Formula.dll</HintPath>
+    <Reference Include="IUPAC2Image">
+      <HintPath>..\..\Excecutables\IUPAC2Image.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>

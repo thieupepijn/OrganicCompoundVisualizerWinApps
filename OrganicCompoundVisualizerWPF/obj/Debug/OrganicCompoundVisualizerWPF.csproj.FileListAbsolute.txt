@@ -19,3 +19,5 @@ C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\Organ
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\IUPAC2Formula.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\GeneralUtils.pdb
 C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\obj\Debug\OrganicCompoundVisualizerWPF.csprojResolveAssemblyReference.cache
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\IUPAC2Image.dll
+C:\Matthieu\ThieuProgs\MultiPlatform\OrganicCompoundVisualizer\WindowsApps\OrganicCompoundVisualizerWPF\bin\Debug\IUPAC2Image.pdb
