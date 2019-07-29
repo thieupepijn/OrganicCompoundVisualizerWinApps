@@ -31,10 +31,18 @@ namespace OrganicCompoundVisualizerWPF
 			int width = (int)this.Width;
 			int height = (int)this.Height;
 			
-			string iupacname = txtIupacName.Text.Trim();	
+			string iupacname = txtIupacName.Text.Trim();
 			
-			IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height);	
-			imgIUPAC.Source = converter.DrawToBitmapImage();
+			try
+			{
+				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, 15, 2, Color.Gray, Brushes.Black, Brushes.Orange, Brushes.DarkBlue);
+				imgIUPAC.Source = converter.DrawToBitmapImage();
+			}
+			catch(Exception exception)
+			{
+				string errorMessage = string.Format("Cannot process {0}", iupacname);
+				MessageBox.Show(errorMessage);
+			}
 		}
 		
 		
