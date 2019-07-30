@@ -35,7 +35,7 @@ namespace OrganicCompoundVisualizerWPF
 			
 			try
 			{
-				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, 15, 2, Color.Gray, Brushes.Black, Brushes.Orange, Brushes.DarkBlue);
+				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, 15, 100, 2, Color.Gray, Brushes.Black, Brushes.Orange, Brushes.DarkBlue);
 				imgIUPAC.Source = converter.DrawToBitmapImage();
 			}
 			catch(Exception exception)
