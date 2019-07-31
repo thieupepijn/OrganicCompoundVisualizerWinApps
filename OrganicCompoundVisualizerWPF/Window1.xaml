@@ -5,16 +5,36 @@
 	>
 	<Grid>
 		<Grid.ColumnDefinitions>
+		<ColumnDefinition Width="Auto" />
 		<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		
 	<Grid.RowDefinitions>
 		<RowDefinition Height="Auto" />
 		<RowDefinition Height="Auto" />
+		<RowDefinition Height="Auto" />
+		<RowDefinition Height="Auto" />
+		<RowDefinition Height="Auto" />
+		<RowDefinition Height="Auto" />
 		<RowDefinition Height="*" />
 	</Grid.RowDefinitions>
-	<TextBox Name="txtIupacName" Grid.Row="0"  />
-	<Button Name="btnDraw" Content="Draw" Grid.Row="1" Click="BtnDraw_Click"  />
-	 <Image Name="imgIUPAC" Grid.Row="2" Stretch="Fill" />
+	
+	<Label Name="lblBackgroundColor" Content="Background color" Grid.Row="0" Grid.Column="0" />
+	<ComboBox Name="cmbBackGroundColor" Grid.Row="0" Grid.Column="1" />
+		
+	<Label Name="lblNodeColor" Content="Node color" Grid.Row="1" Grid.Column="0" />
+	<ComboBox Name="cmbNodeColor" Grid.Row="1" Grid.Column="1" />
+	
+    <Label Name="lblVerticeColor" Content="Vertice color" Grid.Row="2" Grid.Column="0" />
+	<ComboBox Name="cmbVerticeColor" Grid.Row="2" Grid.Column="1" />
+	
+	<Label Name="lblFontColor" Content="Font color" Grid.Row="3" Grid.Column="0" />
+	<ComboBox Name="cmbFontColor" Grid.Row="3" Grid.Column="1" />
+				
+	<Label Name="lblIupacName" Content="Name" Grid.Row="4" Grid.Column="0" />
+	<TextBox Name="txtIupacName" Grid.Row="4" Grid.Column="1" />
+				
+	<Button Name="btnDraw" Content="Draw" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="BtnDraw_Click"  />
+	 <Image Name="imgIUPAC" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Stretch="Fill" />
 	</Grid>
 </Window>
