@@ -65,15 +65,15 @@ namespace OrganicCompoundVisualizerWPF
 			
 			try
 			{
-				
-				int width = (int)this.Width;
-				int height = (int)this.Height;
+				DrawingCanvas.Children.Clear();
+				int width = (int)DrawingCanvas.ActualWidth;
+				int height = (int)DrawingCanvas.ActualHeight;
 				
 				int fontSize = Convert.ToInt16(txtFontsize.Text);
 				int verticeLength = Convert.ToInt16(txtVerticeLength.Text);
 				int verticeThickness = Convert.ToInt16(txtVerticeThickness.Text);
 				
-				Painter painter = new Painter(imgIUPAC);
+				Painter painter = new Painter(DrawingCanvas);
 				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, verticeLength, painter);
 				converter.DrawOnCanvas();
 			}
