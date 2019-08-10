@@ -7,7 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using System.Drawing;
+using System.Windows.Media;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -66,6 +66,12 @@ namespace OrganicCompoundVisualizerWPF
 			try
 			{
 				DrawingCanvas.Children.Clear();
+				
+				Color backgroundColor = GetSelectedColor(cmbBackGroundColor);
+				Brush fontBrush = GetSelectedColorAsBrush(cmbFontColor);
+				Brush nodeBrush = GetSelectedColorAsBrush(cmbNodeColor);
+				Brush verticeBrush = GetSelectedColorAsBrush(cmbVerticeColor);
+				
 				int width = (int)DrawingCanvas.ActualWidth;
 				int height = (int)DrawingCanvas.ActualHeight;
 				
@@ -84,11 +90,13 @@ namespace OrganicCompoundVisualizerWPF
 			}
 		}
 
-		
+	
 		
 		private void InitializeColorComboBoxen()
-		{
-			cmbBackGroundColor.ItemsSource = typeof(Color).GetProperties();
+		{			
+			List<Kleur> kleuren = Util.GetKleuren();
+		     	
+			cmbBackGroundColor.ItemsSource = kleuren;
 			cmbBackGroundColor.DisplayMemberPath = "Name";
 			cmbBackGroundColor.SelectedValuePath = "Name";
 			cmbBackGroundColor.SelectedIndex = 8;
@@ -106,22 +114,20 @@ namespace OrganicCompoundVisualizerWPF
 			cmbVerticeColor.ItemsSource = typeof(Color).GetProperties();
 			cmbVerticeColor.DisplayMemberPath = "Name";
 			cmbVerticeColor.SelectedValuePath = "Name";
-			cmbVerticeColor.SelectedIndex = 137;
-			
-			
+			cmbVerticeColor.SelectedIndex = 137;			
 		}
 		
 		
 		private Color GetSelectedColor(System.Windows.Controls.ComboBox combobox)
 		{
 			string colorName = combobox.SelectedValue.ToString();
-			return (Color)new ColorConverter().ConvertFromString(colorName);
+			return (Color)ColorConverter.ConvertFromString(colorName);
 		}
 		
 		private Brush GetSelectedColorAsBrush(System.Windows.Controls.ComboBox combobox)
 		{
 			Color color = GetSelectedColor(combobox);
-			return new SolidBrush(color);
+			return new SolidColorBrush(color);
 		}
 		
 	}
