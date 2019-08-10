@@ -26,30 +26,56 @@ namespace OrganicCompoundVisualizerWPF
 		{
 			InitializeComponent();
 			InitializeColorComboBoxen();
-		
+			
 		}
 		
 		
+//		void BtnDraw_Click(object sender, RoutedEventArgs e)
+//		{
+//			string iupacname = txtIupacName.Text.Trim();
+//
+//			try
+//			{
+//				Color backgroundColor = GetSelectedColor(cmbBackGroundColor);
+//				Brush fontBrush = GetSelectedColorAsBrush(cmbFontColor);
+//				Brush nodeBrush = GetSelectedColorAsBrush(cmbNodeColor);
+//				Brush verticeBrush = GetSelectedColorAsBrush(cmbVerticeColor);
+//
+//				int width = (int)this.Width;
+//				int height = (int)this.Height;
+//
+//				int fontSize = Convert.ToInt16(txtFontsize.Text);
+//				int verticeLength = Convert.ToInt16(txtVerticeLength.Text);
+//				int verticeThickness = Convert.ToInt16(txtVerticeThickness.Text);
+//
+//				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, fontSize, verticeLength, verticeThickness, backgroundColor, fontBrush, nodeBrush, verticeBrush);
+//				imgIUPAC.Source = converter.DrawToBitmapImage();
+//			}
+//			catch(Exception exception)
+//			{
+//				string errorMessage = string.Format("Cannot process {0}", iupacname);
+//				MessageBox.Show(errorMessage);
+//			}
+//		}
+
+
 		void BtnDraw_Click(object sender, RoutedEventArgs e)
-		{			
+		{
 			string iupacname = txtIupacName.Text.Trim();
 			
 			try
 			{
-				Color backgroundColor = GetSelectedColor(cmbBackGroundColor);
-				Brush fontBrush = GetSelectedColorAsBrush(cmbFontColor);
-				Brush nodeBrush = GetSelectedColorAsBrush(cmbNodeColor);
-				Brush verticeBrush = GetSelectedColorAsBrush(cmbVerticeColor);
 				
 				int width = (int)this.Width;
 				int height = (int)this.Height;
-							
+				
 				int fontSize = Convert.ToInt16(txtFontsize.Text);
 				int verticeLength = Convert.ToInt16(txtVerticeLength.Text);
 				int verticeThickness = Convert.ToInt16(txtVerticeThickness.Text);
 				
-				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, fontSize, verticeLength, verticeThickness, backgroundColor, fontBrush, nodeBrush, verticeBrush);
-				imgIUPAC.Source = converter.DrawToBitmapImage();
+				Painter painter = new Painter(imgIUPAC);
+				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, verticeLength, painter);
+				converter.DrawOnCanvas();
 			}
 			catch(Exception exception)
 			{
@@ -57,31 +83,32 @@ namespace OrganicCompoundVisualizerWPF
 				MessageBox.Show(errorMessage);
 			}
 		}
+
 		
 		
 		private void InitializeColorComboBoxen()
 		{
-		  cmbBackGroundColor.ItemsSource = typeof(Color).GetProperties();
-		  cmbBackGroundColor.DisplayMemberPath = "Name";
-		  cmbBackGroundColor.SelectedValuePath = "Name";
-		  cmbBackGroundColor.SelectedIndex = 51;
+			cmbBackGroundColor.ItemsSource = typeof(Color).GetProperties();
+			cmbBackGroundColor.DisplayMemberPath = "Name";
+			cmbBackGroundColor.SelectedValuePath = "Name";
+			cmbBackGroundColor.SelectedIndex = 8;
 
-		  cmbFontColor.ItemsSource = typeof(Color).GetProperties();
-		  cmbFontColor.DisplayMemberPath = "Name";
-		  cmbFontColor.SelectedValuePath = "Name";
-		  cmbFontColor.SelectedIndex = 8;	
-		  
-		  cmbNodeColor.ItemsSource = typeof(Color).GetProperties();
-		  cmbNodeColor.DisplayMemberPath = "Name";
-		  cmbNodeColor.SelectedValuePath = "Name";
-		  cmbNodeColor.SelectedIndex = 114;
-		  
-		  cmbVerticeColor.ItemsSource = typeof(Color).GetProperties();
-		  cmbVerticeColor.DisplayMemberPath = "Name";
-		  cmbVerticeColor.SelectedValuePath = "Name";
-		  cmbVerticeColor.SelectedIndex = 114;
-		  
-		  
+			cmbFontColor.ItemsSource = typeof(Color).GetProperties();
+			cmbFontColor.DisplayMemberPath = "Name";
+			cmbFontColor.SelectedValuePath = "Name";
+			cmbFontColor.SelectedIndex = 137;
+			
+			cmbNodeColor.ItemsSource = typeof(Color).GetProperties();
+			cmbNodeColor.DisplayMemberPath = "Name";
+			cmbNodeColor.SelectedValuePath = "Name";
+			cmbNodeColor.SelectedIndex = 8;
+			
+			cmbVerticeColor.ItemsSource = typeof(Color).GetProperties();
+			cmbVerticeColor.DisplayMemberPath = "Name";
+			cmbVerticeColor.SelectedValuePath = "Name";
+			cmbVerticeColor.SelectedIndex = 137;
+			
+			
 		}
 		
 		

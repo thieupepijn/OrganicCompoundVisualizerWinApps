@@ -47,6 +47,6 @@
 	<TextBox Name="txtIupacName" Grid.Row="7" Grid.Column="1" />
 				
 	<Button Name="btnDraw" Content="Draw" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Click="BtnDraw_Click"  />
-	 <Image Name="imgIUPAC" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Stretch="Uniform" />
+	<Canvas Name="imgIUPAC" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Background="Yellow" />
 	</Grid>
 </Window>
