@@ -12,17 +12,35 @@ using System.Windows.Media;
 namespace OrganicCompoundVisualizerWPF
 {
 	/// <summary>
-	/// Description of Kleur.
+	/// Description of ColorWrapper.
 	/// </summary>
-	public class Kleur
+	public class ColorWrapper
 	{
 		public Color Color {get; private set;}
 		public string Name { get; private set;}
 		
-		public Kleur(Color color)
+		public ColorWrapper(Color color)
 		{
 			Color = color;
 			Name = Util.GetColorName(color);		
+		}
+		
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			else 
+			{
+				ColorWrapper otherKleur = (ColorWrapper)obj;
+				return Name.Equals(otherKleur.Name);
+			}
+		}
+		
+		public override int GetHashCode()
+		{
+			return Name.GetHashCode();
 		}
 	}
 }

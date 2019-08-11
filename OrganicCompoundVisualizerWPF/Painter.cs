@@ -11,6 +11,7 @@ using Coordinates2Image;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows;
 
 namespace OrganicCompoundVisualizerWPF
 {
@@ -20,25 +21,37 @@ namespace OrganicCompoundVisualizerWPF
 	public class Painter :  IPainter
 	{
 		private Canvas _canvas;
-		public Painter(Canvas canvas)
+		private Color _backgroundColor;
+		private Color _fontColor;
+		private Color _nodeColor;
+		private Color _verticecolor;
+		
+		public Painter(Canvas canvas, Color backgroundColor, Color fontColor, Color nodeColor, Color verticeColor)
 		{
 			_canvas = canvas;	
+			_backgroundColor = backgroundColor;
+			_fontColor = fontColor;
+			_nodeColor = nodeColor;
+			_verticecolor = verticeColor;
 		}
 		
 		public void DrawBackGround()
 		{
-			_canvas.Background = new SolidColorBrush(Colors.White);
+			_canvas.Background = new SolidColorBrush(_backgroundColor);
 		}
 		
 		public void DrawString(string line, int x, int y)
 		{
 			TextBlock textBlock = new TextBlock();
 			textBlock.Text = line;
-			textBlock.Background = new SolidColorBrush(Colors.White);
-			textBlock.Foreground = new SolidColorBrush(Colors.Black);
+			textBlock.Background = new SolidColorBrush(_backgroundColor);
+			textBlock.Foreground = new SolidColorBrush(_fontColor);
+			Size textBlockSize = Util.MeasureTextBlockSize(textBlock);
+			int textBlockWidth = (int)textBlockSize.Width;
+			int textblockHeight = (int)textBlockSize.Height;
 			
-			Canvas.SetLeft(textBlock, x);
-			Canvas.SetTop(textBlock, y);
+			Canvas.SetLeft(textBlock, x - (textBlockWidth / 2));
+			Canvas.SetTop(textBlock, y - (textblockHeight / 2));
 			
 			_canvas.Children.Add(textBlock);
 		}
@@ -46,8 +59,8 @@ namespace OrganicCompoundVisualizerWPF
 		public void DrawCircle(int centerX, int centerY, int radius)
 		{
 			Ellipse circle = new Ellipse();
-			circle.Fill = new SolidColorBrush(Colors.White);
-			circle.Stroke = new SolidColorBrush(Colors.White);
+			circle.Fill = new SolidColorBrush(_nodeColor);
+			circle.Stroke = new SolidColorBrush(_nodeColor);
 			circle.Width = radius;
 			circle.Height = radius;
 						
@@ -66,7 +79,7 @@ namespace OrganicCompoundVisualizerWPF
 			line.Y1 = y1;
 			line.X2 = x2;
 			line.Y2 = y2;
-			line.Stroke = new SolidColorBrush(Colors.Black);
+			line.Stroke = new SolidColorBrush(_verticecolor);
 			line.StrokeThickness = 3;
 			_canvas.Children.Add(line);			
 		}

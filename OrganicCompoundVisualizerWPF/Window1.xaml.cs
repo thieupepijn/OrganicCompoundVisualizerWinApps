@@ -67,11 +67,11 @@ namespace OrganicCompoundVisualizerWPF
 			{
 				DrawingCanvas.Children.Clear();
 				
-				Color backgroundColor = GetSelectedColor(cmbBackGroundColor);
-				Brush fontBrush = GetSelectedColorAsBrush(cmbFontColor);
-				Brush nodeBrush = GetSelectedColorAsBrush(cmbNodeColor);
-				Brush verticeBrush = GetSelectedColorAsBrush(cmbVerticeColor);
-				
+				Color backgroundColor = (Color)cmbBackGroundColor.SelectedValue;
+				Color fontColor = (Color)cmbFontColor.SelectedValue;
+				Color nodeColor = (Color)cmbNodeColor.SelectedValue;
+				Color verticeColor = (Color)cmbVerticeColor.SelectedValue;
+					
 				int width = (int)DrawingCanvas.ActualWidth;
 				int height = (int)DrawingCanvas.ActualHeight;
 				
@@ -79,7 +79,7 @@ namespace OrganicCompoundVisualizerWPF
 				int verticeLength = Convert.ToInt16(txtVerticeLength.Text);
 				int verticeThickness = Convert.ToInt16(txtVerticeThickness.Text);
 				
-				Painter painter = new Painter(DrawingCanvas);
+				Painter painter = new Painter(DrawingCanvas, backgroundColor, fontColor, nodeColor, verticeColor);
 				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, verticeLength, painter);
 				converter.DrawOnCanvas();
 			}
@@ -94,41 +94,30 @@ namespace OrganicCompoundVisualizerWPF
 		
 		private void InitializeColorComboBoxen()
 		{			
-			List<Kleur> kleuren = Util.GetKleuren();
+			List<ColorWrapper> colorWrappers = Util.GetColorWrappers();
 		     	
-			cmbBackGroundColor.ItemsSource = kleuren;
+			cmbBackGroundColor.ItemsSource = colorWrappers;
 			cmbBackGroundColor.DisplayMemberPath = "Name";
-			cmbBackGroundColor.SelectedValuePath = "Name";
-			cmbBackGroundColor.SelectedIndex = 8;
+			cmbBackGroundColor.SelectedValuePath = "Color";
+			cmbBackGroundColor.SelectedItem = colorWrappers.Find(c => c.Name.Equals("Gray"));
 
-			cmbFontColor.ItemsSource = typeof(Color).GetProperties();
+			cmbFontColor.ItemsSource = colorWrappers;
 			cmbFontColor.DisplayMemberPath = "Name";
-			cmbFontColor.SelectedValuePath = "Name";
-			cmbFontColor.SelectedIndex = 137;
+			cmbFontColor.SelectedValuePath = "Color";
+			cmbFontColor.SelectedItem = colorWrappers.Find(c => c.Name.Equals("Black"));
 			
-			cmbNodeColor.ItemsSource = typeof(Color).GetProperties();
+			cmbNodeColor.ItemsSource = colorWrappers;
 			cmbNodeColor.DisplayMemberPath = "Name";
-			cmbNodeColor.SelectedValuePath = "Name";
-			cmbNodeColor.SelectedIndex = 8;
+			cmbNodeColor.SelectedValuePath = "Color";
+			cmbNodeColor.SelectedItem = colorWrappers.Find(c => c.Name.Equals("Red"));
 			
-			cmbVerticeColor.ItemsSource = typeof(Color).GetProperties();
+			cmbVerticeColor.ItemsSource = colorWrappers;
 			cmbVerticeColor.DisplayMemberPath = "Name";
-			cmbVerticeColor.SelectedValuePath = "Name";
-			cmbVerticeColor.SelectedIndex = 137;			
+			cmbVerticeColor.SelectedValuePath = "Color";
+			cmbVerticeColor.SelectedItem = colorWrappers.Find(c => c.Name.Equals("Black"));			
 		}
 		
-		
-		private Color GetSelectedColor(System.Windows.Controls.ComboBox combobox)
-		{
-			string colorName = combobox.SelectedValue.ToString();
-			return (Color)ColorConverter.ConvertFromString(colorName);
-		}
-		
-		private Brush GetSelectedColorAsBrush(System.Windows.Controls.ComboBox combobox)
-		{
-			Color color = GetSelectedColor(combobox);
-			return new SolidColorBrush(color);
-		}
+				
 		
 	}
 }

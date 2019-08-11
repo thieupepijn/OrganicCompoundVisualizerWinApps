@@ -10,6 +10,9 @@ using System;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
+using System.Globalization;
+using System.Windows;
 
 namespace OrganicCompoundVisualizerWPF
 {
@@ -18,20 +21,20 @@ namespace OrganicCompoundVisualizerWPF
 	/// </summary>
 	public class Util
 	{
-		public static List<Kleur> GetKleuren()
+		public static List<ColorWrapper> GetColorWrappers()
 		{
 			List<System.Windows.Media.Color> colors = GetColors();
 			
-			List<Kleur> kleuren = new List<Kleur>();
+			List<ColorWrapper> colorWrappers = new List<ColorWrapper>();
 			
 			foreach(System.Windows.Media.Color color in colors)
 			{
-				Kleur kleur = new Kleur(color);
-				kleuren.Add(kleur);
+				ColorWrapper colorWrapper = new ColorWrapper(color);
+				colorWrappers.Add(colorWrapper);
 			}
 			
-			kleuren.RemoveAll(k => String.IsNullOrEmpty(k.Name));			
-			return kleuren;
+			colorWrappers.RemoveAll(k => String.IsNullOrEmpty(k.Name));
+			return colorWrappers.Distinct().OrderBy(c => c.Name).ToList();
 		}
 		
 		private static List<System.Windows.Media.Color> GetColors()
@@ -59,6 +62,15 @@ namespace OrganicCompoundVisualizerWPF
 			}
 			return null;
 		}
+		
+		public static System.Windows.Size MeasureTextBlockSize(TextBlock textblock)
+		{
+			System.Windows.Media.Typeface typeFace = new System.Windows.Media.Typeface(textblock.FontFamily, textblock.FontStyle, textblock.FontWeight, textblock.FontStretch);		
+			System.Windows.Media.FormattedText formattedText = new System.Windows.Media.FormattedText(textblock.Text, CultureInfo.CurrentCulture, FlowDirection.LeftToRight, 
+			                                                                            typeFace, textblock.FontSize, textblock.Foreground);
+			return new System.Windows.Size(formattedText.Width, formattedText.Height);
+		}
+
 		
 		
 		
