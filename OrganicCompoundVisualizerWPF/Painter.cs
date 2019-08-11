@@ -33,6 +33,7 @@ namespace OrganicCompoundVisualizerWPF
 			_fontColor = fontColor;
 			_nodeColor = nodeColor;
 			_verticecolor = verticeColor;
+			LineThickness = 3;
 		}
 		
 		public void DrawBackGround()
@@ -40,7 +41,7 @@ namespace OrganicCompoundVisualizerWPF
 			_canvas.Background = new SolidColorBrush(_backgroundColor);
 		}
 		
-		public void DrawString(string line, int x, int y)
+		public void DrawString(string line, int centerX, int centerY)
 		{
 			TextBlock textBlock = new TextBlock();
 			textBlock.Text = line;
@@ -50,10 +51,17 @@ namespace OrganicCompoundVisualizerWPF
 			int textBlockWidth = (int)textBlockSize.Width;
 			int textblockHeight = (int)textBlockSize.Height;
 			
-			Canvas.SetLeft(textBlock, x - (textBlockWidth / 2));
-			Canvas.SetTop(textBlock, y - (textblockHeight / 2));
+			Canvas.SetLeft(textBlock, centerX - (textBlockWidth / 2));
+			Canvas.SetTop(textBlock, centerY - (textblockHeight / 2));
 			
 			_canvas.Children.Add(textBlock);
+		}
+		
+		public int GetPixelWidthOfString(string line)
+		{
+			TextBlock textBlock = new TextBlock();
+			textBlock.Text = line;
+			return (int)Util.MeasureTextBlockSize(textBlock).Width;
 		}
 		
 		public void DrawCircle(int centerX, int centerY, int radius)
@@ -72,7 +80,10 @@ namespace OrganicCompoundVisualizerWPF
 			_canvas.Children.Add(circle);
 		}
 		
-		public void DrawLine(int x1, int y1, int x2, int y2)
+		public int LineThickness{get; set;}
+		
+		
+		public void DrawLine(int x1, int y1, int x2, int y2, int thickness)
 		{
 			Line line = new Line();
 			line.X1 = x1;
@@ -80,7 +91,7 @@ namespace OrganicCompoundVisualizerWPF
 			line.X2 = x2;
 			line.Y2 = y2;
 			line.Stroke = new SolidColorBrush(_verticecolor);
-			line.StrokeThickness = 3;
+			line.StrokeThickness = thickness;
 			_canvas.Children.Add(line);			
 		}
 		
