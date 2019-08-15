@@ -25,15 +25,17 @@ namespace OrganicCompoundVisualizerWPF
 		private Color _fontColor;
 		private Color _nodeColor;
 		private Color _verticecolor;
+		private int _fontSize;
 		
-		public Painter(Canvas canvas, Color backgroundColor, Color fontColor, Color nodeColor, Color verticeColor)
+		public Painter(Canvas canvas, Color backgroundColor, Color fontColor, int fontSize, Color nodeColor, Color verticeColor, int verticeThickness)
 		{
 			_canvas = canvas;	
 			_backgroundColor = backgroundColor;
 			_fontColor = fontColor;
+			_fontSize = fontSize;
 			_nodeColor = nodeColor;
 			_verticecolor = verticeColor;
-			LineThickness = 3;
+			LineThickness = verticeThickness;
 		}
 		
 		public void DrawBackGround()
@@ -44,6 +46,7 @@ namespace OrganicCompoundVisualizerWPF
 		public void DrawString(string line, int centerX, int centerY)
 		{
 			TextBlock textBlock = new TextBlock();
+			textBlock.FontSize = _fontSize;
 			textBlock.Text = line;
 			textBlock.Background = new SolidColorBrush(_backgroundColor);
 			textBlock.Foreground = new SolidColorBrush(_fontColor);

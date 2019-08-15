@@ -79,7 +79,7 @@ namespace OrganicCompoundVisualizerWPF
 				int verticeLength = Convert.ToInt16(txtVerticeLength.Text);
 				int verticeThickness = Convert.ToInt16(txtVerticeThickness.Text);
 				
-				Painter painter = new Painter(DrawingCanvas, backgroundColor, fontColor, nodeColor, verticeColor);
+				Painter painter = new Painter(DrawingCanvas, backgroundColor, fontColor, fontSize, nodeColor, verticeColor, verticeThickness);
 				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, verticeLength, painter);
 				converter.DrawOnCanvas();
 			}
@@ -109,7 +109,7 @@ namespace OrganicCompoundVisualizerWPF
 			cmbNodeColor.ItemsSource = colorWrappers;
 			cmbNodeColor.DisplayMemberPath = "Name";
 			cmbNodeColor.SelectedValuePath = "Color";
-			cmbNodeColor.SelectedItem = colorWrappers.Find(c => c.Name.Equals("Red"));
+			cmbNodeColor.SelectedItem = colorWrappers.Find(c => c.Name.Equals("Gray"));
 			
 			cmbVerticeColor.ItemsSource = colorWrappers;
 			cmbVerticeColor.DisplayMemberPath = "Name";
