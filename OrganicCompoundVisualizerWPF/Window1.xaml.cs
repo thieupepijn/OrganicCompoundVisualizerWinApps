@@ -30,35 +30,6 @@ namespace OrganicCompoundVisualizerWPF
 		}
 		
 		
-//		void BtnDraw_Click(object sender, RoutedEventArgs e)
-//		{
-//			string iupacname = txtIupacName.Text.Trim();
-//
-//			try
-//			{
-//				Color backgroundColor = GetSelectedColor(cmbBackGroundColor);
-//				Brush fontBrush = GetSelectedColorAsBrush(cmbFontColor);
-//				Brush nodeBrush = GetSelectedColorAsBrush(cmbNodeColor);
-//				Brush verticeBrush = GetSelectedColorAsBrush(cmbVerticeColor);
-//
-//				int width = (int)this.Width;
-//				int height = (int)this.Height;
-//
-//				int fontSize = Convert.ToInt16(txtFontsize.Text);
-//				int verticeLength = Convert.ToInt16(txtVerticeLength.Text);
-//				int verticeThickness = Convert.ToInt16(txtVerticeThickness.Text);
-//
-//				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, fontSize, verticeLength, verticeThickness, backgroundColor, fontBrush, nodeBrush, verticeBrush);
-//				imgIUPAC.Source = converter.DrawToBitmapImage();
-//			}
-//			catch(Exception exception)
-//			{
-//				string errorMessage = string.Format("Cannot process {0}", iupacname);
-//				MessageBox.Show(errorMessage);
-//			}
-//		}
-
-
 		void BtnDraw_Click(object sender, RoutedEventArgs e)
 		{
 			string iupacname = txtIupacName.Text.Trim();
@@ -75,11 +46,12 @@ namespace OrganicCompoundVisualizerWPF
 				int width = (int)DrawingCanvas.ActualWidth;
 				int height = (int)DrawingCanvas.ActualHeight;
 				
+				System.Windows.Media.FontFamily fontFamily = (FontFamily)cmbFontType.SelectedItem;
 				int fontSize = Convert.ToInt16(txtFontsize.Text);
 				int verticeLength = Convert.ToInt16(txtVerticeLength.Text);
 				int verticeThickness = Convert.ToInt16(txtVerticeThickness.Text);
 				
-				Painter painter = new Painter(DrawingCanvas, backgroundColor, fontColor, fontSize, nodeColor, verticeColor, verticeThickness);
+				Painter painter = new Painter(DrawingCanvas, backgroundColor, fontColor, fontSize, fontFamily, nodeColor, verticeColor, verticeThickness);
 				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, width, height, verticeLength, painter);
 				converter.DrawOnCanvas();
 			}
@@ -114,7 +86,11 @@ namespace OrganicCompoundVisualizerWPF
 			cmbVerticeColor.ItemsSource = colorWrappers;
 			cmbVerticeColor.DisplayMemberPath = "Name";
 			cmbVerticeColor.SelectedValuePath = "Color";
-			cmbVerticeColor.SelectedItem = colorWrappers.Find(c => c.Name.Equals("Black"));			
+			cmbVerticeColor.SelectedItem = colorWrappers.Find(c => c.Name.Equals("Black"));	
+
+			cmbFontType.ItemsSource = Fonts.SystemFontFamilies;	
+			cmbFontType.SelectedItem = Fonts.SystemFontFamilies.First();
+			
 		}
 		
 				

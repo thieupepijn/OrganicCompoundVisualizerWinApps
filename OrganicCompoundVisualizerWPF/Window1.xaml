@@ -19,6 +19,7 @@
         <RowDefinition Height="Auto" />
 		<RowDefinition Height="Auto" />
 		<RowDefinition Height="Auto" />
+		<RowDefinition Height="Auto" />
 		<RowDefinition Height="*" />
 	</Grid.RowDefinitions>
 	
@@ -33,7 +34,7 @@
 	
 	<Label Name="lblFontColor" Content="Font color" Grid.Row="3" Grid.Column="0" />
 	<ComboBox Name="cmbFontColor" Grid.Row="3" Grid.Column="1" />
-				
+					
 	<Label Name="lblVerticeLength" Content="Vertice length" Grid.Row="4" Grid.Column="0" />
 	<TextBox Name="txtVerticeLength" Text="100" Grid.Row="4" Grid.Column="1" />
 	
@@ -42,11 +43,14 @@
 		
 	<Label Name="lblFontsize" Content="Font size" Grid.Row="6" Grid.Column="0" />
 	<TextBox Name="txtFontsize" Grid.Row="6" Text="15" Grid.Column="1" />
+	
+    <Label Name="lblFontType" Content="Font" Grid.Row="7" Grid.Column="0" />
+	<ComboBox Name="cmbFontType" Grid.Row="7" Text="15" Grid.Column="1" />
 			
-	<Label Name="lblIupacName" Content="Name" Grid.Row="7" Grid.Column="0" />
-	<TextBox Name="txtIupacName" Grid.Row="7" Grid.Column="1" />
+	<Label Name="lblIupacName" Content="Name" Grid.Row="8" Grid.Column="0" />
+	<TextBox Name="txtIupacName" Grid.Row="8" Grid.Column="1" />
 				
-	<Button Name="btnDraw" Content="Draw" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Click="BtnDraw_Click"  />
-	<Canvas Name="DrawingCanvas" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Background="Gray" />
+	<Button Name="btnDraw" Content="Draw" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Click="BtnDraw_Click"  />
+	<Canvas Name="DrawingCanvas" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Background="Gray" />
 	</Grid>
 </Window>

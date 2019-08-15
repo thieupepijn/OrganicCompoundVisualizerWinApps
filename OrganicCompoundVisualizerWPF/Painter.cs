@@ -26,13 +26,15 @@ namespace OrganicCompoundVisualizerWPF
 		private Color _nodeColor;
 		private Color _verticecolor;
 		private int _fontSize;
+		private FontFamily _fontFamily;
 		
-		public Painter(Canvas canvas, Color backgroundColor, Color fontColor, int fontSize, Color nodeColor, Color verticeColor, int verticeThickness)
+		public Painter(Canvas canvas, Color backgroundColor, Color fontColor, int fontSize, FontFamily fontFamily, Color nodeColor, Color verticeColor, int verticeThickness)
 		{
 			_canvas = canvas;	
 			_backgroundColor = backgroundColor;
 			_fontColor = fontColor;
 			_fontSize = fontSize;
+			_fontFamily = fontFamily;
 			_nodeColor = nodeColor;
 			_verticecolor = verticeColor;
 			LineThickness = verticeThickness;
@@ -47,6 +49,7 @@ namespace OrganicCompoundVisualizerWPF
 		{
 			TextBlock textBlock = new TextBlock();
 			textBlock.FontSize = _fontSize;
+			textBlock.FontFamily = _fontFamily;
 			textBlock.Text = line;
 			textBlock.Background = new SolidColorBrush(_backgroundColor);
 			textBlock.Foreground = new SolidColorBrush(_fontColor);
