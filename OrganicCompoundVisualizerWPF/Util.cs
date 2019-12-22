@@ -16,9 +16,7 @@ using System.Windows;
 
 namespace OrganicCompoundVisualizerWPF
 {
-	/// <summary>
-	/// Description of Util.
-	/// </summary>
+	
 	public class Util
 	{
 		public static List<ColorWrapper> GetColorWrappers()

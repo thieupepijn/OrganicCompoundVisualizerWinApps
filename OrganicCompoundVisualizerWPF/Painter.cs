@@ -15,9 +15,7 @@ using System.Windows;
 
 namespace OrganicCompoundVisualizerWPF
 {
-	/// <summary>
-	/// Description of Painter.
-	/// </summary>
+	
 	public class Painter :  IPainter
 	{
 		private Canvas _canvas;
