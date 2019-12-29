@@ -9,7 +9,6 @@
 using System;
 using System.Windows.Media;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Linq;
 using IUPAC2Image;

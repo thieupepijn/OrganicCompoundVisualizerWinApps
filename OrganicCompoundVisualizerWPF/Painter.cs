@@ -51,9 +51,8 @@ namespace OrganicCompoundVisualizerWPF
 			textBlock.Text = line;
 			textBlock.Background = new SolidColorBrush(_backgroundColor);
 			textBlock.Foreground = new SolidColorBrush(_fontColor);
-			Size textBlockSize = Util.MeasureTextBlockSize(textBlock);
-			int textBlockWidth = (int)textBlockSize.Width;
-			int textblockHeight = (int)textBlockSize.Height;
+			int textBlockWidth = GetPixelWidthOfString(line);
+			int textblockHeight = GetPixelHeightOfString(line);
 			
 			Canvas.SetLeft(textBlock, centerX - (textBlockWidth / 2));
 			Canvas.SetTop(textBlock, centerY - (textblockHeight / 2));
@@ -67,7 +66,15 @@ namespace OrganicCompoundVisualizerWPF
 			textBlock.Text = line;
 			return (int)Util.MeasureTextBlockSize(textBlock).Width;
 		}
-		
+
+
+		public int GetPixelHeightOfString(string line)
+		{
+			TextBlock textBlock = new TextBlock();
+			textBlock.Text = line;
+			return (int)Util.MeasureTextBlockSize(textBlock).Height;
+		}
+
 		public void DrawCircle(int centerX, int centerY, int radius)
 		{
 			Ellipse circle = new Ellipse();
@@ -98,7 +105,7 @@ namespace OrganicCompoundVisualizerWPF
 			line.StrokeThickness = thickness;
 			_canvas.Children.Add(line);			
 		}
-		
+
 		
 	}
 }

@@ -20,8 +20,8 @@ namespace OrganicCompoundVisualizerConsole
 				string iupacname = args[0];
 				string imageOutputFilePath = args[1];
 				
-				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, 1000, 1000, 15, 125, 2);
-				converter.DrawToFile(imageOutputFilePath);				
+			//	IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, 1000, 1000, 15, 125, 2);
+			//	converter.DrawToFile(imageOutputFilePath);				
 			}
 			else
 			{
