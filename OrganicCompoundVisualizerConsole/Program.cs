@@ -27,9 +27,34 @@ namespace OrganicCompoundVisualizerConsole
 				int fontSize = 15;
 
 				Painter painter = new Painter(imageWidth, imageHeight, verticeThickness, fontSize);
-				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, imageWidth, imageHeight, verticeLength, painter);
-				converter.DrawOnCanvas();
-				painter.SaveToFile(imageOutputFilePath);
+				try
+				{
+					IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, imageWidth, imageHeight, verticeLength, painter);
+					converter.DrawOnCanvas();
+				}
+				catch
+				{
+					string errorMessage = string.Format("Could not generate image of organic compound \"{0}\"", iupacname);
+					Console.WriteLine();
+					Console.WriteLine(errorMessage);
+					return;
+				}
+
+				try
+				{
+					painter.SaveToFile(imageOutputFilePath);
+				}
+				catch
+				{
+					string errorMessage = string.Format("Could not write to file \"{0}\"", imageOutputFilePath);
+					Console.WriteLine();
+					Console.WriteLine(errorMessage);
+					return;
+				}
+
+				string succesMessage = string.Format("Image of organic compound \"{0}\" written to \"{1}\"", iupacname, imageOutputFilePath);
+				Console.WriteLine();
+				Console.WriteLine(succesMessage);
 			}
 			else
 			{
