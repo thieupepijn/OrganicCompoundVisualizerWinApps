@@ -6,9 +6,8 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
-using System;
-using Coordinates2Image;
 using IUPAC2Image;
+using System;
 
 namespace OrganicCompoundVisualizerConsole
 {
@@ -21,17 +20,21 @@ namespace OrganicCompoundVisualizerConsole
 				string iupacname = args[0];
 				string imageOutputFilePath = args[1];
 
-				Painter painter = new Painter(1000, 1000);
-				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, 1000, 1000, 125, painter);
+				int imageWidth = 1500;
+				int imageHeight = 1000;
+				int verticeLength = 125;
+				int verticeThickness = 3;
+				int fontSize = 15;
+
+				Painter painter = new Painter(imageWidth, imageHeight, verticeThickness, fontSize);
+				IUPAC2ImageConverter converter = new IUPAC2ImageConverter(iupacname, imageWidth, imageHeight, verticeLength, painter);
 				converter.DrawOnCanvas();
-				painter.SaveToFile(@"D:\Pepijn\molecuultje.jpg");		
+				painter.SaveToFile(imageOutputFilePath);
 			}
 			else
 			{
 				Console.WriteLine("OrganicCompoundVisualizerConsole <iupac-name> <imagefilepath>");
 			}
-			
-			//	Console.ReadKey(true);
 		}
 		
 		

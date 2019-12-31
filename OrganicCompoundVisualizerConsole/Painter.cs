@@ -1,10 +1,7 @@
 ﻿using Coordinates2Image;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
+using System.IO;
 
 namespace OrganicCompoundVisualizerConsole
 {
@@ -14,18 +11,19 @@ namespace OrganicCompoundVisualizerConsole
         private Bitmap _bitmap;
         private Font _font;
 
-        public Painter(int width, int height)
+        public Painter(int width, int height, int lineThickness, int fontSize)
         {
             _bitmap = new Bitmap(width, height);
             _graafix = Graphics.FromImage(_bitmap);
-            _font = new Font("Arial", 15, FontStyle.Regular);
-            LineThickness = 5;
-
+            LineThickness = lineThickness;
+            _font = new Font("Arial", fontSize, FontStyle.Regular);
         }
         
         public void SaveToFile(string filePath)
         {
-            _bitmap.Save(filePath, ImageFormat.Jpeg);
+            string extension = new FileInfo(filePath).Extension;
+            ImageFormat imageFormat = Util.FileExtension2ImageFormat(extension);
+            _bitmap.Save(filePath, imageFormat);
         }
 
         #region IPainter interface
